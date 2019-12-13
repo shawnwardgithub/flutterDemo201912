@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutterdemo201912/cache/SharedPreferencesUtils.dart';
 import 'package:flutterdemo201912/entity/CustomUserDo.dart';
+import 'package:flutterdemo201912/enums/CommonEnums.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() =>
     runApp(new MaterialApp(home: new Scaffold(body: LoginMainHome())));
@@ -23,6 +26,9 @@ class _LoginMainDetail extends State<LoginMainHome> {
 
   void _sumbitFormData(){
     print(_globalFormKey);
+    SharedPreferences sharepre = SharedPreferencesUtils.getSharedPreferences();
+    sharepre.setString(CommonEnums.ENUM_USERNAME, _customUserDo.userName);
+    sharepre.setString(CommonEnums.ENUM_PASSWORD, _customUserDo.passWord);
   }
 
   @override
